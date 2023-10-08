@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./style/style.css";
 
 function Home() {
-  //Add states: inputValue, error, result, prompt. jresult
+  //Add states: inputValue, error, result, prompt, jresult
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
   const [result, setResult] = useState("");
@@ -32,6 +32,11 @@ function Home() {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
+        setPrompt(inputValue);
+        setResult(data.data.choices[0].text);
+        setJresult(JSON.stringify(data.data, null, 2));
+        setInputValue("");
+        setError("");
       } else {
         throw new Error("An error occured");
       }
@@ -76,5 +81,4 @@ function Home() {
     </div>
   );
 }
-
 export default Home;
