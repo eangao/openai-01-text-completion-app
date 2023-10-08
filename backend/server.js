@@ -60,3 +60,9 @@ const PORT = process.env.PORT || 5000;
 
 //start the server on the chosen PORT
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
+
+const { encode, decode } = require("gpt-3-encoder");
+
+const x = encode("This is some text");
+const cost_per_token = 1.5 / 1000000;
+console.log(4000 * cost_per_token);
